@@ -8,7 +8,8 @@ const  AddExpenseForm = () =>{
 
     const [ex,setEx] = useState(true);
 
-    //const [buttonText, setButtonText] = useState("Expense");
+    const [cat, setCat] = useState('');
+
 
 
     const toggleExpense = (event) => {
@@ -25,7 +26,10 @@ const  AddExpenseForm = () =>{
             name: name,
             cost: ex ? parseInt(cost) : parseInt(cost)*-1,
             ex: ex,
+            cat: cat,
         };
+
+    
 
 
 
@@ -37,6 +41,7 @@ const  AddExpenseForm = () =>{
         setName('');
         setCost('');
         setEx(true);
+        
     };
 
     return (
@@ -54,7 +59,7 @@ const  AddExpenseForm = () =>{
                         >
                     </input>
                 </div>
-                <div className = 'row'>
+                <div className = 'col-sm'>
                     <label>Value</label>
                     <input
                         required = 'required'
@@ -66,9 +71,20 @@ const  AddExpenseForm = () =>{
                         >
                     </input>
                 </div>
-
-                <div className = 'col'> 
                 <div className = 'col-sm'>
+                    <label>Category</label>
+                    <select id = 'cat' value = {cat} onChange ={(event) => setCat(event.target.value)}>
+                        <option value = 'Miscellaneous'>Miscellaneous</option>
+                        <option value = 'Rent'>Rent</option>
+                        <option value = 'Food'>Food</option>
+                        <option value = 'Utilities'>Utilities</option>
+                        <option value = 'Savings'>Savings</option>
+                        <option value = 'Lifestyle'>Lifestyle</option>
+                        <option value = 'Recreation'>Recreation</option>
+                    </select>
+                </div>
+     
+                <div className = 'col-sm'>    
                     <button 
                         type = 'required'
                         className = {ex ? 'btn btn-danger mt-3' : 'btn btn-success mt-3'}
@@ -79,11 +95,12 @@ const  AddExpenseForm = () =>{
                         {ex ? "Expense" : "Income"}
                     </button>
                 </div>
-            </div>
+                
             </div>
 
 
             <div className = 'row'> 
+            
                 <div className = 'col-sm'>
                     <button type = 'submit' className = 'btn btn-primary mt-3'>
                         Save
