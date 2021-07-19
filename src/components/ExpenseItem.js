@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {TiDelete} from 'react-icons/ti';
 import {AppContext} from '../context/AppContext';
+import "../App.css"
 
 const ExpenseItem = (props) =>{
     const {dispatch} = useContext(AppContext);
@@ -23,7 +24,10 @@ const ExpenseItem = (props) =>{
                 <span className = {props.ex ?'badge badge-danger badge-pill mr-3' :'badge badge-success badge-pill mr-3'}>
                     ${-1*props.cost}
                 </span>
-                <TiDelete size ='1.5em' onClick = {handleDeleteExpense}></TiDelete>
+                <a>
+                <TiDelete size ='1.5em' onClick = {handleDeleteExpense} onMouseOver = 'pointer'></TiDelete>
+                </a>
+                
             </div>
         </li>
     );

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ExpenseItem from './ExpenseItem';
 import {AppContext} from '../context/AppContext';
+import ExpenseChart from './ExpenseChart';
 
 const ExpenseList = () =>{
     const { expenses } = useContext(AppContext);
@@ -130,8 +131,10 @@ const ExpenseList = () =>{
                         cat = {expense.cat}
                         
                     />
+                    
                 ))}
             </ul>
+            <ExpenseChart filteredExpenses = {filteredExpenses}></ExpenseChart>
         </>
     );
 };

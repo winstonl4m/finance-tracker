@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {AppContext} from '../context/AppContext';
+import { TextField } from '@material-ui/core';
 
 const  AddExpenseForm = () =>{
     const {dispatch} = useContext(AppContext);
@@ -19,6 +20,11 @@ const  AddExpenseForm = () =>{
 
     const onSubmit = (event) => {
         event.preventDefault();
+
+        if(cost < 0){
+            alert("Cost cannot be negative!")
+            return
+        }
 
 
         const expense = {
@@ -44,12 +50,19 @@ const  AddExpenseForm = () =>{
         
     };
 
+    const isNeg = () =>{
+        if(cost < 0){
+            alert("Cost cannot be negative!")
+        }
+    }
+
     return (
         <form onSubmit = {onSubmit}> 
             <div className = 'row'>
                 <div className = 'col-sm'>
-                    <label>Name</label>
-                    <input
+                    
+                    <TextField
+                        label = 'Enter Item Name'
                         required = 'required'
                         type = 'text'
                         className = 'form-control'
@@ -57,11 +70,11 @@ const  AddExpenseForm = () =>{
                         value = {name}
                         onChange = {(event) => setName(event.target.value)}
                         >
-                    </input>
+                    </TextField>
                 </div>
-                <div className = 'col-sm'>
-                    <label>Value</label>
-                    <input
+                <div className = 'col-sm'>                    
+                    <TextField
+                        label = 'Enter Cost'
                         required = 'required'
                         type = 'number'
                         className = 'form-control'
@@ -69,10 +82,10 @@ const  AddExpenseForm = () =>{
                         value = {cost}
                         onChange = {(event) => setCost(event.target.value)}
                         >
-                    </input>
+                    </TextField>
                 </div>
                 <div className = 'col-sm'>
-                    <label>Category</label>
+                    <label>Category: </label>
                     <select id = 'cat' value = {cat} onChange ={(event) => setCat(event.target.value)}>
                         <option value = 'Miscellaneous'>Miscellaneous</option>
                         <option value = 'Rent'>Rent</option>
