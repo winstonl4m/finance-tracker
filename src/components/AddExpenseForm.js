@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react';
 import {AppContext} from '../context/AppContext';
 import { TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 const  AddExpenseForm = () =>{
     const {dispatch} = useContext(AppContext);
@@ -10,6 +13,37 @@ const  AddExpenseForm = () =>{
     const [ex,setEx] = useState(true);
 
     const [cat, setCat] = useState('');
+
+    const categories = [
+        {
+            value: 'Miscellaneous',
+            label: 'Miscellaneous',
+        },
+        {
+            value: 'Rent',
+            label: 'Rent',
+        },
+        {
+            value: 'Food',
+            label: 'Food',
+        },
+        {
+            value: 'Utilities',
+            label: 'Utilities',
+        },
+        {
+            value: 'Savings',
+            label: 'Savings',
+        },
+        {
+            value: 'Lifestyle',
+            label: 'Lifestyle',
+        },
+        {
+            value: 'Recreation',
+            label: 'Recreation',
+        },
+    ];
 
 
 
@@ -55,6 +89,8 @@ const  AddExpenseForm = () =>{
             alert("Cost cannot be negative!")
         }
     }
+    
+
 
     return (
         <form onSubmit = {onSubmit}> 
@@ -84,17 +120,21 @@ const  AddExpenseForm = () =>{
                         >
                     </TextField>
                 </div>
-                <div className = 'col-sm'>
-                    <label>Category: </label>
-                    <select id = 'cat' value = {cat} onChange ={(event) => setCat(event.target.value)}>
-                        <option value = 'Miscellaneous'>Miscellaneous</option>
-                        <option value = 'Rent'>Rent</option>
-                        <option value = 'Food'>Food</option>
-                        <option value = 'Utilities'>Utilities</option>
-                        <option value = 'Savings'>Savings</option>
-                        <option value = 'Lifestyle'>Lifestyle</option>
-                        <option value = 'Recreation'>Recreation</option>
-                    </select>
+                <div className = 'col-sm'>        
+                    <TextField 
+                        id = 'standard-select-currency' 
+                        select
+                        label = 'Select'
+                        helperText ="Please select the Category"
+                        value = {cat} 
+                        onChange ={(event) => setCat(event.target.value)}>
+
+                        {categories.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                         ))}
+                    </TextField>
                 </div>
      
                 <div className = 'col-sm'>    

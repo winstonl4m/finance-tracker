@@ -2,6 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import ExpenseItem from './ExpenseItem';
 import {AppContext} from '../context/AppContext';
 import ExpenseChart from './ExpenseChart';
+import { TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 const ExpenseList = () =>{
     const { expenses } = useContext(AppContext);
@@ -37,39 +41,43 @@ const ExpenseList = () =>{
             );
             setFilteredExpenses(searchResults);
         }
-        
-        
-        
-        /*
-        switch(catVal){
-            case 'Miscellaneous':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Miscellaneous'))
-                break;
-            case 'Rent':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Rent'))
-                break;
-            case 'Food':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Food'))
-                break;
-            case 'Utilities':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Utilities'))
-                break;
-            case 'Savings':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Savings'))
-                break;
-            case 'Lifestyle':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Lifestyle'))
-                break;
-            case 'Recreation':
-                setFilteredExpenses(expenses.filter(expense =>expense.cat === 'Recreation'))
-                break;
-            default:
-                setFilteredExpenses(expenses);
-                break;
-        }
-        */
-        
     }
+
+    const categories = [
+        {
+            value: 'All',
+            label: 'All',
+        },
+        {
+            value: 'Miscellaneous',
+            label: 'Miscellaneous',
+        },
+        {
+            value: 'Rent',
+            label: 'Rent',
+        },
+        {
+            value: 'Food',
+            label: 'Food',
+        },
+        {
+            value: 'Utilities',
+            label: 'Utilities',
+        },
+        {
+            value: 'Savings',
+            label: 'Savings',
+        },
+        {
+            value: 'Lifestyle',
+            label: 'Lifestyle',
+        },
+        {
+            value: 'Recreation',
+            label: 'Recreation',
+        },
+    ];
+
     
     useEffect(()=>{
         getLocalExpenses();
@@ -105,17 +113,20 @@ const ExpenseList = () =>{
                 </div>
 
                 <div className = 'col'>
-                    <label>Filter by Category:</label>
-                    <select id= 'catVal' value ={catVal} onChange = {handleCatChange}>
-                        <option value = 'All'>All</option>
-                        <option value = 'Miscellaneous'>Miscellaneous</option>
-                        <option value = 'Rent'>Rent</option>
-                        <option value = 'Food'>Food</option>
-                        <option value = 'Utilities'>Utilities</option>
-                        <option value = 'Savings'>Savings</option>
-                        <option value = 'Lifestyle'>Lifestyle</option>
-                        <option value = 'Recreation'>Recreation</option>
-                    </select>
+                    <TextField 
+                        id = 'standard-select-currency' 
+                        select
+                        label = 'Select'
+                        helperText ="Please select the Category"
+                        value = {catVal} 
+                        onChange ={handleCatChange}>
+
+                        {categories.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                         ))}
+                    </TextField>
                 </div>
             </div>
 
