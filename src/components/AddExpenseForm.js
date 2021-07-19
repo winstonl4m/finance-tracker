@@ -3,7 +3,9 @@ import {AppContext} from '../context/AppContext';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const  AddExpenseForm = () =>{
     const {dispatch} = useContext(AppContext);
@@ -14,6 +16,8 @@ const  AddExpenseForm = () =>{
 
     const [cat, setCat] = useState('');
 
+
+    
     const categories = [
         {
             value: 'Miscellaneous',
@@ -137,16 +141,21 @@ const  AddExpenseForm = () =>{
                     </TextField>
                 </div>
      
-                <div className = 'col-sm'>    
-                    <button 
-                        type = 'required'
-                        className = {ex ? 'btn btn-danger mt-3' : 'btn btn-success mt-3'}
-                        id = 'ex'
-                        value = {ex}
-                        onClick = {toggleExpense}
-                        >
-                        {ex ? "Expense" : "Income"}
-                    </button>
+                <div className = 'col-sm'>   
+                    <FormGroup>
+                        <FormControlLabel 
+                            type = 'required'
+                            control ={
+                                <Switch
+                                    checked={ex}
+                                    id = 'ex'
+                                    value = {ex}
+                                    onChange = {toggleExpense}                                   
+                                    color = 'primary'
+                                />}
+                            label = {ex ? "Expense" : "Income"}
+                            />            
+                    </FormGroup>
                 </div>
                 
             </div>

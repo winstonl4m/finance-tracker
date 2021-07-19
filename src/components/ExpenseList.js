@@ -104,11 +104,11 @@ const ExpenseList = () =>{
         <>
             <div className = 'row'>
                 <div className = 'col'>
-                    <input 
-                    type ='text'
-                    className = 'form-control mb-2 mr-sm-2'
-                    placeholder = 'Type to Search..'
-                    onChange = {handleChange}
+                    <TextField 
+                        type ='text'
+                        className = 'form-control mb-2 mr-sm-2'
+                        label = 'Type to Search..'
+                        onChange = {handleChange}
                     />
                 </div>
 
