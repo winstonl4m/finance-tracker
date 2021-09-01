@@ -98,7 +98,7 @@ const  AddExpenseForm = () =>{
                     
                     <TextField
                         label = 'Enter Item Name'
-                        required = 'required'
+                        required = {true}
                         type = 'text'
                         className = 'form-control'
                         id = 'name'
@@ -110,7 +110,7 @@ const  AddExpenseForm = () =>{
                 <div className = 'col-sm'>                    
                     <TextField
                         label = 'Enter Cost'
-                        required = 'required'
+                        required = {true}
                         type = 'number'
                         className = 'form-control'
                         id = 'cost'
@@ -122,6 +122,7 @@ const  AddExpenseForm = () =>{
                 <div className = 'col-sm'>        
                     <TextField 
                         id = 'standard-select-currency' 
+                        required = {true}
                         select
                         label = 'Select'
                         helperText ="Please select the Category"

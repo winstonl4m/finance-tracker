@@ -3,7 +3,6 @@ import ExpenseItem from './ExpenseItem';
 import {AppContext} from '../context/AppContext';
 import ExpenseChart from './ExpenseChart';
 import { TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
@@ -79,9 +78,9 @@ const ExpenseList = () =>{
     ];
 
     
-    useEffect(()=>{
-        getLocalExpenses();
-    },[]);
+    // useEffect(()=>{
+    //     getLocalExpenses();
+    // },[]);
 
 
     //local storage

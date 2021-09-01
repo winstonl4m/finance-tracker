@@ -25,7 +25,7 @@ const ExpenseItem = (props) =>{
                     ${-1*props.cost}
                 </span>
                 <a>
-                <TiDelete size ='1.5em' onClick = {handleDeleteExpense} onMouseOver = 'pointer'></TiDelete>
+                <TiDelete size ='1.5em' onClick = {handleDeleteExpense} ></TiDelete>
                 </a>
                 
             </div>
