@@ -1,7 +1,5 @@
 import React,{useContext, useState, useEffect} from 'react'
 import Chart from "react-google-charts";
-import {AppContext} from '../context/AppContext';
-import ExpenseList from './ExpenseList';
 
 
 
@@ -10,7 +8,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
 
 
     // gets all expenses in array
-    const filteredCatEx = filteredExpenses.filter(expense => expense.ex == true);
+    const filteredCatEx = filteredExpenses.filter(expense => expense.ex === true);
 
 
     const [expenseChartEntry, setExpenseChartEntry] = useState(filteredCatEx);
@@ -22,7 +20,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
 
     // filters rent category
     var rentArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Rent';
+        return expense.cat === 'Rent';
     });
 
     // gets total $ spent on rent
@@ -31,7 +29,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
     }, 0);
 
     var foodArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Food';
+        return expense.cat === 'Food';
     });
 
     const foodTotal = foodArr.reduce((foodTotal, item) =>{
@@ -39,7 +37,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
     }, 0);
 
     var utlityArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Utilities';
+        return expense.cat === 'Utilities';
     });
 
     const utlityTotal = utlityArr.reduce((utlityTotal, item) =>{
@@ -47,7 +45,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
     }, 0);
 
     var savingsArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Savings';
+        return expense.cat === 'Savings';
     });
 
     const savingsTotal = savingsArr.reduce((savingsTotal, item) =>{
@@ -56,7 +54,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
 
 
     var lifestyleArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Lifestyle';
+        return expense.cat === 'Lifestyle';
     });
 
     const lifestyleTotal = lifestyleArr.reduce((lifestyleTotal, item) =>{
@@ -65,7 +63,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
 
 
     var recreationArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Recreation';
+        return expense.cat === 'Recreation';
     });
 
     const recreationTotal = recreationArr.reduce((recreationTotal, item) =>{
@@ -74,7 +72,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
 
 
     var miscArr = expenseChartEntry.filter(function(expense){
-        return expense.cat == 'Miscellaneous';
+        return expense.cat === 'Miscellaneous';
     });
 
     const miscTotal = miscArr.reduce((miscTotal, item) =>{

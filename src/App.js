@@ -6,7 +6,6 @@ import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import AddExpenseForm from './components/AddExpenseForm';
 import {AppProvider} from './context/AppContext';
-import ExpenseChart  from './components/ExpenseChart';
 
 
 const App = () =>{

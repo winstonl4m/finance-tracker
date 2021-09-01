@@ -7,11 +7,11 @@ const ExpenseTotal = () =>{
     const {expenses} = useContext(AppContext);
 
     var incomeArr = expenses.filter(function(expense){
-        return expense.ex == false;
+        return expense.ex === false;
     });
 
     var expenseArr = expenses.filter(function(expense){
-        return expense.ex == true;
+        return expense.ex === true;
     });
 
     const incomeTotal = incomeArr.reduce((incomeTotal, item) =>{
@@ -22,9 +22,7 @@ const ExpenseTotal = () =>{
         return (expenseTotal +=item.cost);
     }, 0);
 
-    const total = expenses.reduce((total, item) =>{
-        return (total +=item.cost);
-    }, 0);
+    
 
 
     return (

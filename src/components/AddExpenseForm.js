@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {AppContext} from '../context/AppContext';
 import { TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -88,11 +87,7 @@ const  AddExpenseForm = () =>{
         
     };
 
-    const isNeg = () =>{
-        if(cost < 0){
-            alert("Cost cannot be negative!")
-        }
-    }
+    
     
 
 
