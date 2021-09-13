@@ -24,7 +24,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
      useEffect(() => {
          setExpenseChartEntry(filteredCatEx)
         
-     }, [])
+     }, [filteredCatEx])
 
     // filters rent category
     var rentArr = expenseChartEntry.filter(function(expense){
