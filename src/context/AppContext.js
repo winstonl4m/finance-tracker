@@ -27,12 +27,25 @@ const AppReducer = (state,action) =>{
     }
 };
 
-//1. SETS INITIAL STATE
+// //1. SETS INITIAL STATE
+// const initialState = {
+//     budget: JSON.parse(localStorage.getItem('budgetValue')),
+//     expenses: JSON.parse(localStorage.getItem('expensesStorage'))
+    
+// };
+
 const initialState = {
-    budget: JSON.parse(localStorage.getItem('budgetValue')),
-    expenses: JSON.parse(localStorage.getItem('expensesStorage'))
+    budget: localStorage.getItem('budgetValue') === null ? 0 : JSON.parse(localStorage.getItem('budgetValue')),
+    expenses: localStorage.getItem('expensesStorage') === null ? [] : JSON.parse(localStorage.getItem('expensesStorage'))
     
 };
+
+// const initialState = {
+//     budget: 0,
+//     expenses: []
+    
+// };
+
 
 //2. CREATES CONTEXT, IMPORTS COMPONENT AND GETS STATE
 export const AppContext = createContext();
@@ -42,7 +55,7 @@ export const AppContext = createContext();
 // ACCEPTS CHILDREN
 export const AppProvider = (props) =>{
     const [state, dispatch] = useReducer(AppReducer, initialState);
-
+    
     return (
         <AppContext.Provider
             value = {{

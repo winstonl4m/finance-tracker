@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import {AppContext} from '../context/AppContext';
 import { TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,6 +14,27 @@ const  AddExpenseForm = () =>{
     const [ex,setEx] = useState(true);
 
     const [cat, setCat] = useState('');
+
+    const [confirm, setConfirm] = useState(false);
+
+    // useEffect(() => {
+    //     if(confirm === true){
+    //         const expense = {
+    //             id: Math.random()*1000,
+    //             name: name,
+    //             cost: ex ? parseInt(cost) : parseInt(cost)*-1,
+    //             ex: ex,
+    //             cat: cat,
+    //         };
+    
+    
+    //         dispatch({
+    //             type: 'ADD_EXPENSE',
+    //             payload: expense,
+    //         });
+    //         setConfirm(false)
+    //     }
+    // }, [confirm])
 
 
     
@@ -63,7 +84,6 @@ const  AddExpenseForm = () =>{
             return
         }
 
-
         const expense = {
             id: Math.random()*1000,
             name: name,
@@ -71,21 +91,23 @@ const  AddExpenseForm = () =>{
             ex: ex,
             cat: cat,
         };
-
-    
-
-
-
+            
+            
         dispatch({
             type: 'ADD_EXPENSE',
             payload: expense,
         });
 
+
+        
+
         setName('');
         setCost('');
         setEx(true);
+        //setConfirm(true);
         
     };
+
 
     
     

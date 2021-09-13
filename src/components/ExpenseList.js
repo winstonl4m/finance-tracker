@@ -16,7 +16,13 @@ const ExpenseList = () =>{
     useEffect(() => {
         setFilteredExpenses(expenses);
         saveLocalExpenses();
+        
     }, [expenses]);
+
+    // useEffect(() => {
+    //     setFilteredExpenses(expenses);
+    //     saveLocalExpenses();
+    // }, []);
 
     const handleChange = (event) =>{
         const searchResults = expenses.filter((filteredExpenses) =>

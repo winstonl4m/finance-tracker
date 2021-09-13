@@ -10,13 +10,21 @@ const ExpenseChart = ({filteredExpenses}) =>{
     // gets all expenses in array
     const filteredCatEx = filteredExpenses.filter(expense => expense.ex === true);
 
+    const [filteredShit, setFilteredShit] = useState(filteredExpenses);
 
-    const [expenseChartEntry, setExpenseChartEntry] = useState(filteredCatEx);
+
+
+    const [expenseChartEntry, setExpenseChartEntry] = useState(filteredCatEx ||[]);
+
+    const [confirm, setConfirm] = useState(false);
+
     
-    useEffect(() => {
-        setExpenseChartEntry(filteredCatEx)
+
+
+     useEffect(() => {
+         setExpenseChartEntry(filteredCatEx)
         
-    }, [filteredCatEx])
+     }, [])
 
     // filters rent category
     var rentArr = expenseChartEntry.filter(function(expense){
@@ -95,7 +103,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
 
 
     return (
-        <>
+        <div>
             <Chart
                 width={'500px'}
                 height={'300px'}
@@ -108,7 +116,7 @@ const ExpenseChart = ({filteredExpenses}) =>{
                 rootProps={{ 'data-testid': '1' }}
                 />
             
-        </>
+        </div>
     )
     
 }
